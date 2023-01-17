@@ -1,0 +1,44 @@
+.form__container {
+  max-width: 400px;
+  margin: auto;
+  padding: 3rem;
+  box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.15);
+  background: #fff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form_group {
+  margin: 1rem 0;
+}
+
+input,
+label,
+span {
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 10px 10px;
+  font-size: 1.6rem;
+  background: rgba(0,0,0,.05);
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+span {
+  margin-top: 1rem;
+  display: block;
+}
+
+.btn-primary {
+  padding: 1rem;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}

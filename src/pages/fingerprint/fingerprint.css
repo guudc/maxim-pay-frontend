@@ -1,0 +1,100 @@
+.content {
+  position: relative;
+  background-color: #fff;
+  padding: 3rem;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 500px;
+}
+
+.fingerprint-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #ddd;
+}
+
+.fingerprint-box {
+  height: 10rem;
+}
+
+.fingerprint-btn {
+  color: white;
+  padding: 1rem;
+  /* font-size: 1.8rem; */
+  font-weight: bold;
+  background-color: blue;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.fingerprint-btn-grey {
+  color: white;
+  padding: 1rem;
+  font-weight: bold;
+  background-color: grey;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-left: auto;
+}
+.fingerprint-btn-grey:active {
+   background-color: #212121;
+}
+.overlay {
+  position: fixed;
+  width: 100vw;height: 100vh;
+  left:0px; top:0px;
+  background: rgba(0, 0, 0, .9);
+  z-index: 100;
+  display: flex;align-items: center;justify-content: center;
+}
+.modal {
+  background-color: #fff;
+  box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  animation: pop 400ms;
+  max-width: 700px;width: calc(100vw - 30px);
+  min-height: 40px;
+  border-radius: 10px;
+  overflow: hidden;display: flex;
+  align-items: flex-start; flex-direction: column;
+}
+@keyframes pop {
+    0% {transform: scale(0);}
+    100% {transform: scale(1);}
+}
+.modal_error {
+  color:white;background-color: darkred;
+  margin-left: auto; margin-right: auto;
+  padding: 8px;
+}
+.modal_msg {
+  margin-left: 20px;  margin-top: 10px;
+  font-weight: bold;font-size: 20px;
+  margin-bottom: 30px;
+}
+.fingerprintselct {
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  height: 150px;
+  overflow-x: auto;
+  margin-bottom: 10px;
+  display: flex;
+}
+.fingerprint_img {
+  max-width: 80px;max-height: 100px;
+  margin-right: 20px;cursor: pointer;
+  border-radius: 10px;flex-shrink: 0;
+}
+.fingerprint_img:hover {
+    background-color: rgba(0,0,0,.1);
+}
+.fingerprint_img:active {
+  background-color: rgba(0,0,0,.2);
+}

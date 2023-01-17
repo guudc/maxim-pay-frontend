@@ -1,0 +1,48 @@
+:root {
+  --white: #fff;
+  --black: #000;
+}
+
+*::before,
+*,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.8rem;
+  background-color: #eee;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input {
+  border: none;
+  outline: none;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 4rem;
+}
