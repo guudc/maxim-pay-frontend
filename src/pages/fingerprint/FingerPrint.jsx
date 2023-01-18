@@ -26,7 +26,7 @@ const regFingerPrint = (_id) => {
             setModalMsg('Successfull'); setModalStaus('good')
             //go to fingerprint
             setTimeout(() => {
-              window.location.href = "/"
+              window.location.href = "/checkout"
             }, 200)
           }
           else {
