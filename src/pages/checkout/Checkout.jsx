@@ -32,7 +32,6 @@ const pay = (_id) => {
   //generate random string
   _id = prompt('Fingerprint number')
   const _print = generateRandomString(_id * 1);
-  alert(_print)
   showModalInfo(true); setModalMsg('Paying with MaximPay'); setModalStaus('')
   payWithMaxim(_print, 500.90)
     .then((res) => {  
