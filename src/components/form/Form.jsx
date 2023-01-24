@@ -54,7 +54,7 @@ export const Form = () => {
         const data = {
            name: name, email: email
         }
-        return fetch(`http://localhost:1000/newuser`, {
+        return fetch(`https://maxim-i7f1.onrender.com/newuser`, {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
