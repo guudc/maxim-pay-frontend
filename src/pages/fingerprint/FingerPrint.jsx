@@ -2,15 +2,6 @@ import React from "react";
 import "./fingerprint.css";
 import FingerPrintIcon from "../../assets/svg/fingerprint.svg";
 import finger1 from "../../assets/img/Fingerprints/00.png";
-import finger2 from "../../assets/img/Fingerprints/01.png";
-import finger3 from "../../assets/img/Fingerprints/02.png";
-import finger4 from "../../assets/img/Fingerprints/03.png";
-import finger5 from "../../assets/img/Fingerprints/04.png";
-import finger6 from "../../assets/img/Fingerprints/05.png";
-import finger7 from "../../assets/img/Fingerprints/06.png";
-import finger8 from "../../assets/img/Fingerprints/07.png";
-import finger9 from "../../assets/img/Fingerprints/08.png";
-import finger10 from "../../assets/img/Fingerprints/09.png";
 import { E, G } from "../../components/utility";
 import { hideModalInfo, ModalInfo, setModalMsg, setModalStaus, showModalInfo } from "../../components/infomodal";
 
@@ -20,10 +11,12 @@ const regFingerPrint = (_id) => {
     //generate random string
     const _print = generateRandomString(_id * 15)
     showModalInfo(true); setModalMsg('Registering fingerprint'); setModalStaus('')
-    regUserPrint(id, _print)
-      .then((res) => {
+    regUserPrint(id)
+      .then((res) => { 
           if(res.status === true) {
             setModalMsg('Successfull'); setModalStaus('good')
+            //show the fingerprint number to the regsitered user
+            alert('Your fingerprint number is ' + res.num + ' \n Keep it in mind. You would need it in future')
             //go to fingerprint
             setTimeout(() => {
               window.location.href = "/checkout"
@@ -53,11 +46,11 @@ function generateRandomString(length) {
   }
   return result;
 }
-const regUserPrint = (email, _print) => {
+const regUserPrint = (email) => {
         const data = {
-           print: _print, email: email
+           email: email
         }
-        return fetch(`https://maxim-i7f1.onrender.com/reguserprint`, {
+        return fetch(`http://localhost:1000/reguserprint`, {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -95,19 +88,10 @@ id = G('id')
         <div className="overlay">
             <div className="modal">
               <div className="modal_error">Fingerprint scanner not detected</div>
-              <div className="modal_msg">Select from these simulated fingerprints</div>
+              <div className="modal_msg">Use simulated fingerprint</div>
               <div className="fingerprintselct">
                   <img onClick={() => regFingerPrint(1)} src={finger1} className='fingerprint_img' />
-                  <img onClick={() => regFingerPrint(2)} src={finger2} className='fingerprint_img' />
-                  <img onClick={() => regFingerPrint(3)} src={finger3} className='fingerprint_img' />
-                  <img onClick={() => regFingerPrint(4)} src={finger4} className='fingerprint_img' />
-                  <img onClick={() => regFingerPrint(5)} src={finger5} className='fingerprint_img' />
-                  <img onClick={() => regFingerPrint(6)} src={finger6} className='fingerprint_img' />
-                  <img onClick={() => regFingerPrint(7)} src={finger7} className='fingerprint_img' />
-                  <img onClick={() => regFingerPrint(8)} src={finger8} className='fingerprint_img' />
-                  <img onClick={() => regFingerPrint(9)} src={finger9} className='fingerprint_img' />
-                  <img onClick={() => regFingerPrint(10)} src={finger10} className='fingerprint_img' />
-             </div>
+               </div>
               <div  onClick={hideFingerPrint} className="fingerprint-btn-grey">
                   Cancel
               </div>

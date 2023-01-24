@@ -30,7 +30,7 @@ export const Form = () => {
       //valid
       showModalInfo(true); setModalMsg('Registering new user'); setModalStaus('')
       regUser(user.email, user.name)
-      .then((res) => {console.log(res)
+      .then((res) => {
           if(res.status === true) {
             setModalMsg('Successfull'); setModalStaus('good')
             //go to fingerprint
@@ -39,7 +39,7 @@ export const Form = () => {
             }, 200)
           }
           else {
-            setModalMsg(res.msg); setModalStaus('error')
+              setModalMsg(res.msg); setModalStaus('error')
           }
           hideModalInfo(3500)
       })
@@ -54,7 +54,7 @@ export const Form = () => {
         const data = {
            name: name, email: email
         }
-        return fetch(`https://maxim-i7f1.onrender.com/newuser`, {
+        return fetch(`http://localhost:1000/newuser`, {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -102,6 +102,7 @@ export const Form = () => {
           <Link to='/checkout'>
             Go  to demo store
           </Link>
+          
       </form>
       <ModalInfo />
     </div>

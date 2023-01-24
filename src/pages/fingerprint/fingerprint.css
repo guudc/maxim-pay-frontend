@@ -59,7 +59,7 @@
   box-shadow: 0 4rem 6rem rgba(0, 0, 0, 0.3);
   z-index: 10;
   animation: pop 400ms;
-  max-width: 700px;width: calc(100vw - 30px);
+  max-width: 400px;width: calc(100vw - 30px);
   min-height: 40px;
   border-radius: 10px;
   overflow: hidden;display: flex;
@@ -80,16 +80,14 @@
   margin-bottom: 30px;
 }
 .fingerprintselct {
-  width: calc(100% - 40px);
-  margin-left: 20px;
+  margin-left: auto; margin-right: auto;
   height: 150px;
-  overflow-x: auto;
   margin-bottom: 10px;
   display: flex;
 }
 .fingerprint_img {
   max-width: 80px;max-height: 100px;
-  margin-right: 20px;cursor: pointer;
+  cursor: pointer;
   border-radius: 10px;flex-shrink: 0;
 }
 .fingerprint_img:hover {
