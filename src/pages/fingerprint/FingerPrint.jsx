@@ -4,14 +4,16 @@ import FingerPrintIcon from "../../assets/svg/fingerprint.svg";
 import finger1 from "../../assets/img/Fingerprints/00.png";
 import { E, G } from "../../components/utility";
 import { hideModalInfo, ModalInfo, setModalMsg, setModalStaus, showModalInfo } from "../../components/infomodal";
+import "../../components/session";
+import { getSession } from "../../components/session";
+import { SERVER_LINK } from "../../../config";
 
-let id = ""
+ 
 
 const regFingerPrint = (_id) => {
     //generate random string
-    const _print = generateRandomString(_id * 15)
     showModalInfo(true); setModalMsg('Registering fingerprint'); setModalStaus('')
-    regUserPrint(id)
+    regUserPrint()
       .then((res) => { 
           if(res.status === true) {
             setModalMsg('Successfull'); setModalStaus('good')
@@ -19,7 +21,7 @@ const regFingerPrint = (_id) => {
             alert('Your fingerprint number is ' + res.num + ' \n Keep it in mind. You would need it in future')
             //go to fingerprint
             setTimeout(() => {
-              window.location.href = "/checkout"
+              window.location.href = "/wallet"
             }, 200)
           }
           else {
@@ -37,20 +39,13 @@ const showFingerPrint = () => {
 const hideFingerPrint = () => {
   E('fingerprint').style.display = "none"
 }
-function generateRandomString(length) {
-  let result = '';
-  const characters = 'aaaaaaaaaaaaaaaaaaaaaaa';
-  const charactersLength = characters.length;
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  return result;
-}
-const regUserPrint = (email) => {
+
+const regUserPrint = () => {
+  console.log(getSession())
         const data = {
-           email: email
+            b: getSession()
         }
-        return fetch(`https://maximpayserver.onrender.com/reguserprint`, {
+        return fetch( SERVER_LINK + `/reguserprint`, {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
@@ -64,7 +59,7 @@ const regUserPrint = (email) => {
   }
 export const FingerPrint = () => {
 //get the id of this page
-id = G('id')
+ 
  
   return (
     <>

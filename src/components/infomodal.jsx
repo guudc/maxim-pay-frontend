@@ -77,6 +77,13 @@ const setModalStaus = (_type) => {
         }
     }
 }
+//to set info modal
+const setInfo = (params) => {
+    showModalInfo(params.status || true)
+    setModalMsg(params.msg || "")
+    setModalStaus(params.status || "")
+    hideModalInfo(params.duration || 3000)
+}
 const ModalInfo = () => {
  
     return (
@@ -92,4 +99,4 @@ const ModalInfo = () => {
 
 }
 
-export {ModalInfo, showModalInfo, hideModalInfo, setModalMsg, setModalStaus}
+export {ModalInfo, setInfo, showModalInfo, hideModalInfo, setModalMsg, setModalStaus}

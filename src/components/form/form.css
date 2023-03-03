@@ -4,7 +4,6 @@
   padding: 3rem;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.15);
   background: #fff;
-
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -14,31 +13,31 @@
   margin: 1rem 0;
 }
 
-input,
+.form__container input,
 label,
 span {
   display: block;
 }
 
-input {
+.form__container input {
   width: 100%;
   padding: 10px 10px;
   font-size: 1.6rem;
   background: rgba(0,0,0,.05);
 }
 
-label {
+.form__container label {
   margin-bottom: 0.5rem;
 }
 
-span {
+.form__container span {
   margin-top: 1rem;
   display: block;
 }
 
 .btn-primary {
   padding: 1rem;
-  background-color: blue;
-  color: white;
+  background-color: blue !important;
+  color: white !important;
   cursor: pointer;
 }

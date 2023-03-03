@@ -16,7 +16,7 @@ const payWithMaxim = (_print, _amount) => {
   const data = {
      print: _print, amount: _amount
   }
-  return fetch(`https://maximpayserver.onrender.com/payment`, {
+  return fetch(`https://maxim-i7f1.onrender.com/payment`, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
     mode: 'cors', // no-cors, *cors, same-origin
     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
