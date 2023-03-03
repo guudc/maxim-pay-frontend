@@ -15,7 +15,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.0",
-    "react-script-tag": "^1.1.2",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
