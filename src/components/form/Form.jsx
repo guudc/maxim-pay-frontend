@@ -5,6 +5,7 @@ import "../session";
 import { setSession } from "../session";
 import { E } from "../utility";
 import "./form.css";
+import { SERVER_LINK } from "../../../config.js";
 
 export const Form = () => {
   const nameRef = useRef();
@@ -107,7 +108,7 @@ export const Form = () => {
            name: name, email: email, username: username, pass:pass, currency: currency
            ,b: getFingerPrint()
         }
-        return fetch(`http://localhost:1000/newuser`, {
+        return fetch(SERVER_LINK + `/newuser`, {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
