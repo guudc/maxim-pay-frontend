@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { hideModalInfo, ModalInfo, setModalMsg, setModalStaus, showModalInfo } from "../infomodal";
 import "./form.css";
 import { getSession } from "../session";
+import { SERVER_LINK } from "../../../config.js";
 
 export const EditForm = () => {
   const nameRef = useRef();
@@ -62,7 +63,7 @@ export const EditForm = () => {
            b: getSession()
         }
         console.log(data)
-        return fetch(`http://localhost:1000/modifyuser`, {
+        return fetch(SERVER_LINK + `/modifyuser`, {
           method: 'POST', // *GET, POST, PUT, DELETE, etc.
           mode: 'cors', // no-cors, *cors, same-origin
           cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
