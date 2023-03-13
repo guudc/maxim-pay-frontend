@@ -41,10 +41,10 @@ const getOtherUser = (_user) => {
 }).then((response) => response.json()
 .then((data) => {return data}))
 }
-const transfer = (_amount, _receiver) => {
+const transfer = (_amount, _receiver,_print) => {
   //construct browser fingerprint
   const data = {
-     b:getSession(), amount: _amount, username: _receiver
+     b:getSession(), amount: _amount, username: _receiver, print: _print
   }
   return fetch( SERVER_LINK + `/transfer`, {
     method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -151,33 +151,49 @@ export const Transfer = () => {
       E('tx_send').disabled = true
     }
   }
+  function generateRandomString(length) {
+    let result = '';
+    const characters = 'aaaaaaaaaaaaaaaaaaaaaaa';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
   const handleSubmit = (e) => { 
     e.preventDefault();
     let _val = E('tx_val').value.trim().replace(/ /g, "") * 1
     const _usr = E('user_input').value.trim()
      if(canDo) {
       //do validation
-      showModalInfo(true); setModalMsg('Sending'); setModalStaus('')
-      transfer(_val, _usr)
-      .then((res) => {  
-          if(res.status === true) {
-            setModalMsg('Successfull'); setModalStaus('good')
-            //update user details
-            _init()
-            E('user_input').value = ""
-            E('shown').style.display = 'none'
-            E('notshown').style.display = 'none'
-          }
-          else {
-            if(res.msg.indexOf('session') > -1){res.msg = 'Something went wrong'}
-              setModalMsg(res.msg); setModalStaus('error')
-          }
-          hideModalInfo(3500)
-      })
-      .catch((err) => { 
-        
-        setModalMsg('Network error'); setModalStaus('error');hideModalInfo(3500)  
-      })
+      const _id = prompt('Fingerprint number')
+      if((_id * 1) > 0){
+        const _print = generateRandomString(_id * 1);
+        showModalInfo(true); setModalMsg('Sending'); setModalStaus('')
+        transfer(_val, _usr, _print)
+        .then((res) => {  
+            if(res.status === true) {
+              setModalMsg('Successfull'); setModalStaus('good')
+              //update user details
+              _init()
+              E('user_input').value = ""
+              E('shown').style.display = 'none'
+              E('notshown').style.display = 'none'
+            }
+            else {
+              if(res.msg.indexOf('session') > -1){res.msg = 'Something went wrong'}
+                setModalMsg(res.msg); setModalStaus('error')
+            }
+            hideModalInfo(3500)
+        })
+        .catch((err) => { 
+          
+          setModalMsg('Network error'); setModalStaus('error');hideModalInfo(3500)  
+        })
+      }
+      else{
+        alert("Invalid fingerprint number")
+      }
      }
    };
    _init()
