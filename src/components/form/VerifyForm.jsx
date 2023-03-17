@@ -28,7 +28,8 @@ const handleSubmit = (e) => {
         else {
           //valid
           showModalInfo(true); setModalMsg('Verifing'); setModalStaus('')
-          verify(getUserData().username, user.code)
+          console.log(userData)
+          verify(userData.username, user.code)
           .then((res) => {  
               if(res.status === true) {
                 setModalMsg('Successfull'); setModalStaus('good')
