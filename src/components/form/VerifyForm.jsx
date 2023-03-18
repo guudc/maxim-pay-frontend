@@ -90,7 +90,7 @@ const handleSubmit = (e) => {
         if(getUserData() != null) {
             //stop timer
             clearInterval(tmr)
-            userData = getUserData();  
+            userData = getUserData();  console.log(userData)
             if(userData.verify != 'true') { 
                 if(!hasGot) {
                     //else run the send verification code
