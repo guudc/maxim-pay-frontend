@@ -28,7 +28,9 @@ const handleSubmit = (e) => {
         else {
           //valid
           showModalInfo(true); setModalMsg('Verifing'); setModalStaus('')
-          console.log(userData)
+          const tmr = setInterval(() => {
+           if(userData != undefined && userData != null){
+            clearInterval(tmr)
           verify(userData.username, user.code)
           .then((res) => {  
               if(res.status === true) {
@@ -44,6 +46,8 @@ const handleSubmit = (e) => {
           .catch((err) => {  
             setModalMsg('Network error'); setModalStaus('error');hideModalInfo(3500)  
           })
+           }
+          }, 1000)
         }
         
       };
